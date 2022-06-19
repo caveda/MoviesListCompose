@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.victorcaveda.composecourse.ui.theme.ComposeCourseTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    CreateViewColumn()
+                    LabelButton()
                 }
             }
         }
@@ -36,56 +36,43 @@ class MainActivity : ComponentActivity() {
 
 }
 
+@Preview(
+    showBackground = true,
+    name = "labelButton",
+    widthDp = 200,
+    heightDp = 100
+)
 @Composable
-private fun CreateViewBox() {
+private fun LabelButton() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
-    )
-    {
-        Greeting("Victor")
-        Greeting("Caveda", modifier = Modifier.align(Alignment.BottomCenter))
+    ) {
+        Text(
+            text = "Tap Me",
+            modifier = Modifier
+                .clickable { /*TODO*/ }
+                .background(Color.Cyan)
+                .border(width = 1.dp, color = Color.Black)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        )
     }
 }
 
+//@Preview(name = "mediaItem", showBackground = true)
 @Composable
-private fun CreateViewColumn() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceAround,
-        horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
-        Greeting("Victor", modifier = Modifier.background(Color.Green))
-        Greeting("Caveda", modifier = Modifier.background(Color.Red))
-        Greeting("Aranda", modifier = Modifier.background(Color.Cyan))
-    }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier
-) {
-    Text(text = "Hello $name!", modifier = modifier)
-}
-
-@Preview(
-    showBackground = true,
-    name = "default hello victor",
-    widthDp = 200,
-    heightDp = 200
-)
-@Composable
-fun DefaultPreview() {
-    ComposeCourseTheme {
+private fun MediaItem() {
+    Column {
         Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(color = Color.Red)
         )
         {
-            Greeting("Victor")
-            Greeting("Caveda")
+
         }
+        Text("Movie title")
     }
 }
+
