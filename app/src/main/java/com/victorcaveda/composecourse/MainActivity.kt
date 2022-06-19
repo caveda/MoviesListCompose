@@ -28,12 +28,54 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LabelButton()
+                    MediaItem()
                 }
             }
         }
     }
 
+}
+
+@Composable
+private fun LabelButton(text: String, modifier: Modifier = Modifier) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = text,
+            modifier = Modifier
+                .clickable { /*TODO*/ }
+                .background(Color.Green)
+                .border(width = 1.dp, color = Color.Black)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        )
+    }
+}
+
+@Preview(name = "mediaItem", showBackground = true)
+@Composable
+private fun MediaItem() {
+    Column {
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(color = MaterialTheme.colors.primary)
+        )
+        {
+
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colors.secondary)
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("Movie title")
+        }
+    }
 }
 
 @Preview(
@@ -43,36 +85,6 @@ class MainActivity : ComponentActivity() {
     heightDp = 100
 )
 @Composable
-private fun LabelButton() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "Tap Me",
-            modifier = Modifier
-                .clickable { /*TODO*/ }
-                .background(Color.Cyan)
-                .border(width = 1.dp, color = Color.Black)
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-        )
-    }
+private fun ButtonSample() {
+    LabelButton("hola")
 }
-
-//@Preview(name = "mediaItem", showBackground = true)
-@Composable
-private fun MediaItem() {
-    Column {
-        Box(
-            modifier = Modifier
-                .height(200.dp)
-                .fillMaxWidth()
-                .background(color = Color.Red)
-        )
-        {
-
-        }
-        Text("Movie title")
-    }
-}
-
