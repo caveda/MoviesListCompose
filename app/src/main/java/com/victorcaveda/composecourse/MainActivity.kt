@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.victorcaveda.composecourse.ui.theme.ComposeCourseTheme
@@ -73,7 +74,13 @@ private fun MediaItem() {
                 .padding(16.dp),
             contentAlignment = Alignment.Center
         ) {
-            Text("Movie title")
+            Text(
+                text = "Movie title",
+                maxLines = 1,
+                style = MaterialTheme.typography.h6.copy(
+                    fontFamily = FontFamily.Monospace
+                )
+            )
         }
     }
 }
